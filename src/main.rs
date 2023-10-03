@@ -25,30 +25,11 @@ fn main() {
         .add_plugins(PlayerPlugin)
         .add_plugins(CameraPlugin)
         .add_plugins(WorldPlugin)
-        .add_plugins(RapierPhysicsPlugin::<NoUserData>::pixels_per_meter(100.))
-        .add_systems(Startup, setup);
+        .add_plugins(RapierPhysicsPlugin::<NoUserData>::pixels_per_meter(100.));
 
     // Add debug stuff
     #[cfg(feature = "debug")]
-    app.add_plugin(RapierDebugRenderPlugin::default());
+    app.add_plugins(RapierDebugRenderPlugin::default());
 
     app.run();
-}
-
-fn setup(
-    mut commands: Commands,
-    mut meshes: ResMut<Assets<Mesh>>,
-    mut materials: ResMut<Assets<ColorMaterial>>,
-) {
-    commands
-        .spawn(MaterialMesh2dBundle {
-            mesh: meshes
-                .add(bevy::prelude::shape::Quad::new(Vec2::new(50., 50.)).into())
-                .into(),
-            material: materials.add(ColorMaterial::from(Color::DARK_GRAY)),
-            transform: Transform::from_translation(Vec3::new(100., 100., 0.)),
-            ..default()
-        })
-        .insert(Collider::cuboid(25., 25.))
-        .insert(RigidBody::Fixed);
 }
