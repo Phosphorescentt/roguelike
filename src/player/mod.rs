@@ -31,7 +31,8 @@ fn setup_player(
             },
         ))
         .insert(Collider::ball(25.))
-        .insert(RigidBody::Dynamic);
+        .insert(RigidBody::Dynamic)
+        .insert(Name::new("Player"));
 }
 
 fn player_move(

@@ -6,8 +6,9 @@ pub struct CameraPlugin;
 
 impl Plugin for CameraPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, setup_camera)
-            .add_systems(FixedUpdate, camera_controller);
+        app.insert_resource(ClearColor(Color::rgb(0., 0., 0.)))
+            .add_systems(Startup, setup_camera)
+            .add_systems(Update, camera_controller);
     }
 }
 

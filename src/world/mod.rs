@@ -24,5 +24,6 @@ fn setup_world(
             ..default()
         })
         .insert(Collider::cuboid(25., 25.))
-        .insert(RigidBody::Fixed);
+        .insert(RigidBody::Fixed)
+        .insert(Name::new("DARK_GRAY square"));
 }
