@@ -41,8 +41,6 @@ fn particle_effect(
     };
 
     let spawner = Spawner::rate(30.0.into());
-    println!("{:?}", spawner);
-    println!("{:?}", spawner.is_once());
     let effect = effects.add(
         EffectAsset::new(4096, spawner, writer.finish())
             .with_name("2d")

@@ -32,7 +32,10 @@ fn setup_player(
         ))
         .insert(Collider::ball(25.))
         .insert(RigidBody::Dynamic)
-        .insert(Name::new("Player"));
+        .insert(Name::new("Player"))
+        .with_children(|p| {
+            p.spawn(Camera2dBundle::default());
+        });
 }
 
 fn player_move(
